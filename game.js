@@ -59,6 +59,11 @@ function create(){
         frames: [{key: 'mario', frame: 0}]
     })
 
+    this.anims.create({
+        key: 'mario-jump',
+        frames: [{key: 'mario', frame: 5}]
+    })
+
     this.keys = this.input.keyboard.createCursorKeys()
 }
 
@@ -75,5 +80,10 @@ function update(){
     }
     else{
         this.mario.anims.play('mario-idle', true)
+    }
+
+    if (this.keys.up.isDown){
+        this.mario.y -= 5
+        this.mario.anims.play('mario-jump', true)
     }
 }
